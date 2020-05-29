@@ -1,5 +1,4 @@
-
-# A very simple Flask Hello World app for you to get started with...
+#!/usr/bin/python3.7
 
 from flask import Flask, jsonify, redirect
 import mysql.connector
@@ -24,7 +23,6 @@ def get_source():
     mycursor.execute('USE msitapati$crypto_news')
     mycursor.execute(qry)
     rows = mycursor.fetchall()
-
     parsed_data = []
     for row in rows:
         publishedAt = row[0]
@@ -44,5 +42,4 @@ def get_source():
                   'content' : content,
                   'url' : url}
         parsed_data.append(fields)
-
     return jsonify({'articles': parsed_data})
