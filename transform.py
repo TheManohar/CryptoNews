@@ -20,17 +20,17 @@ def read_data():
 def parse_data(data):
     parsed_data = []
     for element in data:
-        for i,v in enumerate(element["articles"]):
-            source = v['source']['name']
-            source_id = v['source']['id']
+        for article in element["articles"]:
+            source = article['source']['name']
+            source_id = article['source']['id']
             if source_id is None:
                 source_id = source.lower().replace(' ','-')
-            author = v["author"]
-            title = v["title"]
-            description = v["description"]
-            url = v["url"]
-            publishedAt = ' '.join(v["publishedAt"].replace('Z','').split('T'))
-            content = v["content"]
+            author = article["author"]
+            title = article["title"]
+            description = article["description"]
+            url = article["url"]
+            publishedAt = ' '.join(article["publishedAt"].replace('Z','').split('T'))
+            content = article["content"]
             row = publishedAt, source, source_id, author, title, description, content, url
             parsed_data.append(row)
     return parsed_data
