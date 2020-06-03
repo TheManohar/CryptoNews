@@ -6,15 +6,17 @@ import sys
 
 def read_data():
     data = []
-    for filename in os.listdir(os.getcwd()+'/news_data')[:100]:
-        try:
-            with open(os.path.join(os.getcwd()+'/news_data', filename), 'r') as f:
-                data.append(json.load(f))
-        except:
-            e = sys.exc_info()[0]
-            print(f'Error: {filename} {e}')
-        finally:
-            os.replace(f'{os.getcwd()}/news_data/{filename}', f'{os.getcwd()}/done/{filename}')
+    for filename in os.listdir('/home/msitapati/CryptoNews/news_data'):
+        if filename.endswith(".json"):
+            try:
+                with open(os.path.join('/home/msitapati/CryptoNews/news_data', filename), 'r') as f:
+                    data.append(json.load(f))
+            except:
+                e = sys.exc_info()[0]
+                print(f'Error: {filename} {e}')
+            finally:
+                #os.replace(f'{os.getcwd()}/news_data/{filename}', f'{os.getcwd()}/done/{filename}')
+                os.remove(f'/home/msitapati/CryptoNews/news_data/{filename}')
     return data
 
 def parse_data(data):
@@ -34,8 +36,3 @@ def parse_data(data):
             row = publishedAt, source, source_id, author, title, description, content, url
             parsed_data.append(row)
     return parsed_data
-
-if __name__ == "__main__":
-    data = read_data()
-    parsed_data = parse_data(data)
-    print(parsed_data)

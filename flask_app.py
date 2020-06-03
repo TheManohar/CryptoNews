@@ -18,7 +18,7 @@ def get_source():
     mydb = mysql.connector.connect(user=mysql_u,
                                     passwd=mysql_p,
                                     host='msitapati.mysql.pythonanywhere-services.com')
-    qry = 'SELECT * FROM articles;'
+    qry = 'SELECT * FROM articles ORDER BY publishedAt DESC;'
     mycursor = mydb.cursor()
     mycursor.execute('USE msitapati$crypto_news')
     mycursor.execute(qry)

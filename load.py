@@ -24,4 +24,5 @@ if __name__ == "__main__":
     json = read_data()
     data = parse_data(json)
     insert_data(mydb, data)
-    print('Success! Data instered into MySQL')
+    print('Success! Data inserted into MySQL')
+    print(f'Newest Article: {data[0]}')

@@ -28,10 +28,11 @@ def get_news(q, language='en', pageSize=100, apiKey=apiKey):
     with open(f'/home/msitapati/CryptoNews/news_data/{timestamp}_{titlestamp}.json', 'w') as outfile:
         json.dump(data, outfile)
 
-def get_news_t(qInTitle, language='en', pageSize=100, apiKey=apiKey):
+def get_news_t(qInTitle, language='en', sortBy='publishedAt', pageSize=100, apiKey=apiKey):
     URL = ('http://newsapi.org/v2/everything?'
         f'qInTitle={qInTitle}&'
         f'language={language}&'
+        f'sortBy={sortBy}&'
         f'pageSize={pageSize}&'
         f'apiKey={apiKey}')
     data = requests.get(URL).json()
