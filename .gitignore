@@ -131,4 +131,4 @@ dmypy.json
 # custom
 CN_config.py
 *.json
-.plk
+.pkl
