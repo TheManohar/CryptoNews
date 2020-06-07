@@ -131,5 +131,4 @@ dmypy.json
 # custom
 CN_config.py
 *.json
-__pycache__/
-*.py[cod]
+.plk
