@@ -22,4 +22,4 @@ if __name__=='__main__':
 
         print(f'Newest article: {parsed_data[0]}')
 
-        time.sleep(10800)
+        time.sleep(3600)
