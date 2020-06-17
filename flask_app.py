@@ -4,7 +4,6 @@ from flask import Flask, jsonify, redirect
 import mysql.connector
 from CN_config import mysql_u, mysql_p
 
-
 app = Flask(__name__)
 #app.config["DEBUG"] = True
 
@@ -12,9 +11,9 @@ app = Flask(__name__)
 def hello_world():
     return redirect('/api/v1.0/articles')
 
+
 @app.route('/api/v1.0/articles', methods=['GET'])
-def get_source():
-    #sources = []
+def get_articles():
     mydb = mysql.connector.connect(user=mysql_u,
                                     passwd=mysql_p,
                                     host='msitapati.mysql.pythonanywhere-services.com')
@@ -42,4 +41,4 @@ def get_source():
                   'content' : content,
                   'url' : url}
         parsed_data.append(fields)
-    return jsonify({'articles': parsed_data})
+    return jsonify({'n_articles':len(parsed_data),'articles': parsed_data})

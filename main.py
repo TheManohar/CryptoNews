@@ -3,6 +3,9 @@ import time
 from extract import get_news_t
 from load import connect_base, insert_data
 from transform import read_data, parse_data
+from db_dump import select_data, save_df
+from data_analysis import save_df as save_dash_df
+from data_analysis import get_df_clean, get_df_daily
 from CN_config import mysql_u, mysql_p
 
 qInTitle = 'crypto OR bitcoin OR ethereum'
@@ -21,5 +24,16 @@ if __name__=='__main__':
         print('Success! Data instered into MySQL')
 
         print(f'Newest article: {parsed_data[0]}')
+
+        df = select_data(mydb, 'msitapati$crypto_news', 'articles')
+        save_df(df)
+        print(f'CREATED: {df.name}.plk')
+
+        df_clean = get_df_clean()
+        df_daily = get_df_daily()
+        save_dash_df(df_clean)
+        print(f'CREATED: {df_clean.name}.plk')
+        save_dash_df(df_daily)
+        print(f'CREATED: {df_daily.name}.plk')
 
         time.sleep(3600)
