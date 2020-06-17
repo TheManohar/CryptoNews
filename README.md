@@ -1,13 +1,14 @@
 # CryptoNews
-CryptoNews is project based on [Flask](https://stackshare.io/flask) and [Dash](https://plotly.com/dash). <br>
-The **ETL** collects the latest news about crypto from various news sources to a [MySQL](https://www.mysql.com/) database. <br>
-**Data Analysis** performs a sentiment analysis on headlines and description of articles, by using [vaderSentiment](https://pypi.org/project/vaderSentiment/). <br>
+CryptoNews is project based on `Flask` and `Dash`. <br>
+The **ETL** collects the latest news about crypto from various news sources to a `MySQL` database. <br>
+**Data Analysis** performs a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
 Finally, the **Dashboard** displays the average sentiment score for the collected articles and how many were evaluated.
 
 # Dashboard Elements
+The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com)
 ## Sentiment Analysis
 ![avg_scores.png](avg_scores.png)
-With the use of vaderSentiment I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news
+With the use of `vaderSentiment` I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news
 
 ## Daily Articles Count
 ![articles_count.png](articles_count.png)
