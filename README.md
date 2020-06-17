@@ -1,5 +1,5 @@
 # CryptoNews
-CryptoNews is project based on `Flask` and `Dash`. <br>
+CryptoNews is a project based on `Flask` and `Dash`. <br>
 The **ETL** collects the latest news about crypto from various news sources to a `MySQL` database. <br>
 **Data Analysis** performs a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
 Finally, the **Dashboard** displays the average sentiment score for the collected articles and how many were evaluated.
