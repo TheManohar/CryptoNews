@@ -132,3 +132,4 @@ dmypy.json
 CN_config.py
 *.json
 *.pkl
+notebooks/
