@@ -22,8 +22,8 @@ This is a simple barchart displaying the count for how many times a crypto-relat
 
 ## Data Analysis Scripts:
 1) `db_dump.py`: convert a complete copy of the artcles table into a DataFrame and dumps it into .pkl format <br>
-2) `data_analysis.py`: performs: data cleaning, Sentiment Analysis and prepares a daily resapling of the data <br>
+2) `data_analysis.py`: performs: data cleaning, Sentiment Analysis and prepares a daily resampling of the data <br>
 
 ## Dashboard Scripts:
-1) `dash_app.py`: scipt to setup the layout and plotly graphs necessary to generate the dashboard <br>
+1) `dash_app.py`: script to setup the layout and plotly graphs necessary to generate the dashboard <br>
 2) `flask_app.py`: an API based on Flask. It collects and displays the latest news in json format <br>
