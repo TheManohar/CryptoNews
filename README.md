@@ -1,8 +1,8 @@
 # CryptoNews
-CryptoNews is a project based on `Flask` and `Dash`. <br>
-The **ETL** collects the latest news about crypto from various news sources to a `MySQL` database. <br>
-**Data Analysis** performs a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
-Finally, the **Dashboard** displays the average sentiment score for the collected articles and how many were evaluated.
+CryptoNews is a project based on `Flask` and `Dash`. The main parts of the project are: <br>
+**ETL**: collecting the latest news about crypto from various news sources to a `MySQL` database. <br>
+**Data Analysis**: performing a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
+**Dashboard**: display the average sentiment score for the collected articles and how many were evaluated.
 
 # Dashboard Elements
 The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com)
@@ -15,13 +15,13 @@ With the use of `vaderSentiment` I have analysed headline, description and conte
 This is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day
 
 ## ETL Scripts:
-1) `main.py`: mian scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
+1) `main.py`: main scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
 2) `extract.py`: fetching the latest news from newsapi.org for the keywords: crypto, bitcoin and ethereum <br>
 3) `transform.py`: data parsing <br>
 4) `load.py`: load parsed data into MySQL server <br>
 
 ## Data Analysis Scripts:
-1) `db_dump.py`: covert a complete copy of the artcles table into a DataFrame and dumps it into .pkl format <br>
+1) `db_dump.py`: convert a complete copy of the artcles table into a DataFrame and dumps it into .pkl format <br>
 2) `data_analysis.py`: performs: data cleaning, Sentiment Analysis and prepares a daily resapling of the data <br>
 
 ## Dashboard Scripts:
