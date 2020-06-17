@@ -9,6 +9,10 @@ Finally, the **Dashboard** displays the average sentiment score for the collecte
 ![avg_scores.png](avg_scores.png)
 With the use of vaderSentiment I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news
 
+## Daily Articles Count
+![articles_count.png](articles_count.png)
+This is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day
+
 ## ETL Scripts:
 1) `main.py`: mian scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
 2) `extract.py`: fetching the latest news from newsapi.org for the keywords: crypto, bitcoin and ethereum <br>
