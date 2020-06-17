@@ -14,6 +14,7 @@ With the use of `vaderSentiment` I have analysed headline, description and conte
 ![articles_count.png](articles_count.png)
 This is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day
 
+# Project Scripts
 ## ETL Scripts:
 1) `main.py`: main scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
 2) `extract.py`: fetching the latest news from newsapi.org for the keywords: crypto, bitcoin and ethereum <br>
