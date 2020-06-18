@@ -134,3 +134,4 @@ CN_config.py
 *.pkl
 notebooks/
 archive/
+*.drawio
