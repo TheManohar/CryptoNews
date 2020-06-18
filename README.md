@@ -16,7 +16,7 @@ This is a simple barchart displaying the count for how many times a crypto-relat
 
 # Project Scripts
 ![crypto_news.png](crypto_news.png) <br>
-This is how the data moves within this project So tahat you can see the final resulting dashboard.
+This is how the data moves within this project, so that you can see the final resulting dashboard.
 
 ## ETL Scripts:
 1) `main.py`: main scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
