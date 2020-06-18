@@ -5,17 +5,17 @@ CryptoNews is a project based on `Flask` and `Dash`. The main parts of the proje
 **Dashboard**: display the average sentiment score for the collected articles and how many were evaluated.
 
 # Dashboard Elements
-The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com)
+The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com) 
 ## Sentiment Analysis
-![avg_scores.png](avg_scores.png)
+![avg_scores.png](avg_scores.png) <br>
 With the use of `vaderSentiment` I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news
 
 ## Daily Articles Count
-![articles_count.png](articles_count.png)
+![articles_count.png](articles_count.png) <br>
 This is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day
 
 # Project Scripts
-![crypto_news.png](crypto_news.png)
+![crypto_news.png](crypto_news.png) <br>
 This is how the data moves within this project So tahat you can see the final resulting dashboard.
 
 ## ETL Scripts:
