@@ -19,7 +19,7 @@ This is a simple barchart displaying the count for how many times a crypto-relat
 This is how the data moves within this project, so that you can see the final resulting dashboard.
 
 ## ETL Scripts:
-1) `main.py`: main scrip that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
+1) `main.py`: main script that runs the ETL and Data Analysis scripts every 3600 seconds (1 hour)
 2) `extract.py`: fetching the latest news from newsapi.org for the keywords: crypto, bitcoin and ethereum <br>
 3) `transform.py`: data parsing <br>
 4) `load.py`: load parsed data into MySQL server <br>
