@@ -1,3 +1,8 @@
+# Table of Contents
+[CryptoNews](https://github.com/TheManohar/CryptoNews#cryptonews) <br>
+[Dashboard Elements](https://github.com/TheManohar/CryptoNews#dashboard-elements) <br>
+[Project Scripts](https://github.com/TheManohar/CryptoNews#project-scripts) <br>
+
 # CryptoNews
 CryptoNews is a project based on `Flask` and `Dash`. The main parts of the project are: <br>
 **ETL**: collecting the latest news about crypto from various news sources to a `MySQL` database. <br>
