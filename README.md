@@ -1,6 +1,6 @@
 # Table of Contents
-[CryptoNews](https://github.com/TheManohar/CryptoNews#cryptonews) <br>
-[Dashboard Elements](https://github.com/TheManohar/CryptoNews#dashboard-elements) <br>
+[CryptoNews](#cryptonews) <br>
+[Dashboard Elements](#dashboard-elements) <br>
 [Project Scripts](#project-scripts) <br>
 
 # CryptoNews
