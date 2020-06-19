@@ -1,11 +1,11 @@
 #!/usr/bin/python3.7
 
 import pandas as pd
-#import datetime
-#import sys
+import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import warnings
 
-df = pd.read_pickle('df_data/df_articles.pkl')
+df = pd.read_pickle('/home/msitapati/CryptoNews/df_data/df_articles.pkl')
 df = df.set_index(['publishedAt'])
 
 # Data Ceaning
@@ -23,46 +23,34 @@ df_clean['author'] = df_clean['author'].str.replace(')','')
 df_clean['author'] = df_clean['author'].str.split('(', expand=True)[0]
 
 ## Clean df description field
-for i,v in enumerate(df_clean['description']):
-    if str(v).endswith('…'):
-        df_clean['description'][i] = v[:-1]
+df_clean['description'] = df_clean['description'].str.replace('…','')
 
 ## Clean df content field
-for i,v in enumerate(df_clean['content']):
-    if str(v).endswith(' chars]'):
-        df_clean['content'][i] = v[:-16]
-
+df_clean['content'] = df['content'].str.split('…', expand=True)[0]
 
 # Sentiment Analysis
 analyzer = SentimentIntensityAnalyzer()
 
-## Title  Sentiment Analysis
-df_clean['t_score'] = pd.Series()
-for i,v in enumerate(df_clean['title']):
-    vs = analyzer.polarity_scores(v)
-    df_clean['t_score'][i] = vs['compound']
+## Create t_score
+df_clean['title'] = df_clean['title'].replace(np.NaN, ' ')
+df_clean['t_score'] = [i['compound'] for i in df_clean['title'].apply(analyzer.polarity_scores)]
+df_clean['t_score'] = df_clean['t_score'].replace(0, np.NaN)
 
-## Description Sentiment Analysis
-df_clean['d_score'] = pd.Series(dtype='float')
-for i,v in enumerate(df_clean['description']):
-    try:
-        vs = analyzer.polarity_scores(v)
-        df_clean['d_score'][i] = vs['compound']
-    except:
-        df_clean['d_score'][i] = 0
+## Create d_score
+df_clean['description'] = df_clean['description'].replace(np.NaN, ' ')
+df_clean['d_score'] = [i['compound'] for i in df_clean['description'].apply(analyzer.polarity_scores)]
+df_clean['d_score'] = df_clean['d_score'].replace(0, np.NaN)
 
-## Content Sentiment Analysis
-df_clean['c_score'] = pd.Series()
-for i,v in enumerate(df_clean['content']):
-    try:
-        vs = analyzer.polarity_scores(v)
-        df_clean['c_score'][i] = vs['compound']
-    except:
-        df_clean['c_score'][i] = 0
+## Create c_score
+df_clean['content'] = df_clean['content'].replace(np.NaN, ' ')
+df_clean['c_score'] = [i['compound'] for i in df_clean['content'].apply(analyzer.polarity_scores)]
+df_clean['c_score'] = df_clean['c_score'].replace(0, np.NaN)
 
 ## Avreage Score
-df_clean['avg_score'] = (df_clean['t_score'] + df_clean['d_score'] + df_clean['c_score']) / 3
-
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", category=RuntimeWarning)
+    df_clean['avg_score'] = np.nanmean(df_clean[['t_score', 'd_score', 'c_score']], axis=1)
+df_clean = df_clean.replace(np.NaN, 0)
 
 # Create df_daily
 df_daily = df_clean[['crypto','bitcoin','ethereum']]
@@ -87,6 +75,7 @@ ETH_score = ETH_score.resample('D').mean()
 ETH_score = ETH_score.sort_index(ascending=True)
 df_daily['ETH_score'] = df_daily.merge(ETH_score, how='outer', on='publishedAt')['avg_score']
 
+df_clean.name = 'df_clean'
 df_daily.name = 'df_daily'
 
 def get_df_clean(df_clean=df_clean):
@@ -95,11 +84,9 @@ def get_df_clean(df_clean=df_clean):
 def get_df_daily(df_daily=df_daily):
     return df_daily
 
-def save_df(df):
-    return df.to_pickle(f'df_data/{df.name}.pkl')
+def save_dash_df(df):
+    return df.to_pickle(f'/home/msitapati/CryptoNews/df_data/{df.name}.pkl')
 
 if __name__ == "__main__":
-    save_df(df_clean)
-    print(f'CREATED: {df_clean.name}.plk')
-    save_df(df_daily)
-    print(f'CREATED: {df_daily.name}.plk')
+    save_dash_df(df_daily)
+    print(f'CREATED: {df_daily.name}.pkl')

@@ -28,10 +28,10 @@ def select_data(mydb, db_name, table_name):
     return df
 
 def save_df(df):
-    return df.to_pickle(f'df_data/{df.name}.pkl')
+    return df.to_pickle(f'/home/msitapati/CryptoNews/df_data/{df.name}.pkl')
 
 if __name__ == "__main__":
     mydb = connect_base(mysql_u, mysql_p)
     df = select_data(mydb, 'msitapati$crypto_news', 'articles')
     save_df(df)
-    print(f'CREATED: {df.name}.plk')
+    print(f'CREATED: {df.name}.pkl')
