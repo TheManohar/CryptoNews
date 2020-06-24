@@ -35,4 +35,4 @@ This is how the data moves within this project, so that you can see the final re
 
 ## Dashboard Scripts:
 1) `dash_app.py`: script to setup the layout and plotly graphs necessary to generate the dashboard <br>
-2) `flask_app.py`: an API based on Flask. It collects and displays the latest news in json format <br>
+2) `flask_app.py`: an API based on Flask. It collects and displays the latest news in json format (to be implemented) <br>
