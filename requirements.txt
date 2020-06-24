@@ -1,3 +1,8 @@
 python=3.7
-plotly
+mysql-connector-python
+numpy
 pandas
+vaderSentiment
+flask
+plotly
+dash
