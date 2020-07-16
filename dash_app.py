@@ -5,10 +5,12 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
-
+import os
 app = dash.Dash(__name__)
 
-df_daily = pd.read_pickle('/home/msitapati/CryptoNews/df_data/df_daily.pkl')
+my_path = os.path.abspath(os.path.dirname(__file__))
+path = f'{my_path}/df_data/df_daily.pkl'
+df_daily = pd.read_pickle(f'{path}')
 df_daily = df_daily.fillna(0)
 df = df_daily[:'2020-05-29']
 
@@ -24,12 +26,11 @@ app.layout = html.Div([
             style={'textAlign': 'center'}),
 
     dcc.Markdown('''
-                    A project based on [Flask](https://stackshare.io/flask) and [Dash](https://plotly.com/dash). \n
-                    The **ETL** collects the latest news about crypto from various news sources to a [MySQL](https://www.mysql.com/) database. \n
-                    **Data Analysis** performs a sentiment analysis on headlines and description of articles, by using [vaderSentiment](https://pypi.org/project/vaderSentiment/). \n
-                    Finally, this **Dashboard** displays the average sentiment score for the collected articles and how many were evaluated.
+                    An interactive dashboard by [Manohar Sitapati](https://www.linkedin.com/in/manoharsitapati/). Detailed documentation and code are available on [GitHub](https://github.com/TheManohar/CryptoNews)
 
-                '''),
+                ''',
+                style={'textAlign': 'center'}),
+
 html.Div([
     dcc.Graph(id='score-lines',
         figure = {'data':[
@@ -55,8 +56,8 @@ html.Div([
                     mode = 'lines',
                     marker=dict(color=colors['ethereum']))],
                 'layout': go.Layout(
-                title = 'Daily Sentiment Score',
-                yaxis = dict(title= 'Average Sentiment Score',
+                title = 'Sentiment Analysis',
+                yaxis = dict(title= 'News Sentiment Score (range: -100% to +100%)',
                              tickformat=".2%"),
                 xaxis = dict(rangeselector=dict(buttons=list([dict(count=7,
                                                                  label="1w",
@@ -90,7 +91,7 @@ html.Div([
                     marker=dict(color=colors['ethereum']),
                     textposition='auto')],
                 'layout': go.Layout(
-                title = 'Daily Articles Count',
+                title = 'Daily Collected Articles',
                 yaxis = {'title': 'Number of mentions in headline'},
                 xaxis=dict(
                 rangeselector=dict(buttons=list([dict(count=7,
@@ -106,9 +107,4 @@ html.Div([
                                 tickformat = '%a %d-%m',
                                 type="date",
                                 range=initial_range))}),
-]),
-html.Div([
-    dcc.Markdown('''
-                    A project by [Manohar Sitapati](https://www.linkedin.com/in/manoharsitapati/), find the whole original code in [GitHub](https://github.com/TheManohar/CryptoNews)
-                '''),
 ])])

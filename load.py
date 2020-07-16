@@ -11,13 +11,15 @@ def connect_base(user, passwd):
     print(f'Successfully connected to MySQL')
     return mydb
 
-def insert_data(mydb, data):
+def insert_data(data):
+    mydb = connect_base(mysql_u, mysql_p)
     for i,v in enumerate(data):
         sql = 'INSERT IGNORE INTO articles VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
         mycursor = mydb.cursor()
         mycursor.execute('USE msitapati$crypto_news')
         mycursor.execute(sql, v)
         mydb.commit()
+    mydb.close()
 
 if __name__ == "__main__":
     mydb = connect_base(mysql_u, mysql_p)
