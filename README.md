@@ -9,6 +9,7 @@ CryptoNews is a project based on `Flask` and `Dash`. The main parts of the proje
 **Data Analysis**: performing a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
 **Dashboard**: display the average sentiment score for the collected articles and how many were evaluated.
 
+> # Disclaimer: Need to update for dasboard V2
 # Dashboard Elements
 The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com) 
 ## Sentiment Analysis
