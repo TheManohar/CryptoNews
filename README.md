@@ -9,19 +9,22 @@ CryptoNews is a project based on `Flask` and `Dash`. The main parts of the proje
 **Data Analysis**: performing a sentiment analysis on headlines and description of articles, by using `vaderSentiment`. <br>
 **Dashboard**: display the average sentiment score for the collected articles and how many were evaluated.
 
-> # Disclaimer: Need to update for dasboard V2
 # Dashboard Elements
 The live dashboard is available on: [http://msitapati.pythonanywhere.com](http://msitapati.pythonanywhere.com) 
-## Sentiment Analysis
-![avg_scores.png](avg_scores.png) <br>
-With the use of `vaderSentiment` I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news
 
-## Daily Articles Count
-![articles_count.png](articles_count.png) <br>
-This is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day
+## Sentiment Analysis Time Series
+![img/time_series.png](img/time_series.png) <br>
+With the use of `vaderSentiment` I have analysed headline, description and content extract of all the articles and averaged these scores into one main sentiment score for each hour. This score goes from -100% for the most negative possible news sentiment up to +100% for a perfectly positive sentiment score on the news.
+To improve the readability of the timeseries I also included a 12h moving average linechart with fill to zero.
+At the bottom of the graph there is a simple barchart displaying the count for how many times a crypto-related keyword has been mentioned in news headlines for a given day.
+
+## News Articles Data Table
+![img/data_table.png](img/data_table.png) <br>
+This is a simple data table that displays the news articles metadata and the sentiment score for each article to examine.
+As the time series, this table also gets updated when the user selects a certain keyowrd or date range at the top of the dashboard.
 
 # Project Scripts
-![crypto_news.png](crypto_news.png) <br>
+![img/crypto_news.png](img/crypto_news.png) <br>
 This is how the data moves within this project, so that you can see the final resulting dashboard.
 
 ## ETL Scripts:
@@ -36,4 +39,4 @@ This is how the data moves within this project, so that you can see the final re
 
 ## Dashboard Scripts:
 1) `dash_app.py`: script to setup the layout and plotly graphs necessary to generate the dashboard <br>
-2) `flask_app.py`: an API based on Flask. It collects and displays the latest news in json format (to be implemented) <br>
+2) `prototypes` folder: contains scripts of past dashboard versions and future versions that I'm currently working on

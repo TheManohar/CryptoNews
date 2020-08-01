@@ -3,13 +3,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
-from plotly.subplots import make_subplots
 import pandas as pd
 import dash_table
 import os
 import dash_bootstrap_components as dbc
 from datetime import datetime as dt
-
 
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
 
